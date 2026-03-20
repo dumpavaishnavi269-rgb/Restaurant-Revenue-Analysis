@@ -1,5 +1,5 @@
 -- ============================================================
---  RESTAURANT REVENUE & BUSINESS GROWTH ANALYSIS
+--  CUSTOMER BEHAVIOUR & REVENUE INSIGHTS
 --  Author  : Dumpa Vaishnavi
 --  Tool    : MySQL 8.0 | MySQL Workbench
 -- ============================================================
