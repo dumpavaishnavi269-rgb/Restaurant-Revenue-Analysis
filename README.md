@@ -1,137 +1,105 @@
-# 🍽️ CUSTOMER BEHAVIOUR & REVENUE INSIGHTS
+# 🍽️ RESTAURANT SALES ANALYSIS
 
-![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
-![SQL](https://img.shields.io/badge/SQL-Data%20Analysis-orange)
-![Tool](https://img.shields.io/badge/Tool-MySQL%20Workbench-lightblue)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square&logo=mysql)
+![SQL](https://img.shields.io/badge/SQL-Data%20Analysis-orange?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
+![Tool](https://img.shields.io/badge/Tool-MySQL%20Workbench-lightblue?style=flat-square)
 
 ---
 
 ## 📌 About This Project
 
-I built this project using **MySQL 8.0 and MySQL Workbench** to analyse
-restaurant revenue, customer behaviour, and food sales data.
-
-I designed a **4-table relational database** from scratch, inserted real data,
-performed data cleaning and consistency checks, wrote **10+ SQL queries**
-using Joins, Aggregations, Window Functions and created **2 reusable SQL Views**
-to deliver business insights.
+I built this project using **MySQL 8.0** and **MySQL Workbench** to analyse real restaurant sales data.  
+I designed a **4-table relational database** from scratch — covering customers, menu items, orders, and order details — inserted data manually, performed complete **data cleaning & validation**, and solved **10 business problems** using advanced SQL queries to generate meaningful insights for restaurant decision-making.
 
 ---
 
-## 🎯 Key Insights Found
+## 💡 Key Insights
 
-- 📍 **Hyderabad** drives **55.4%** of total restaurant revenue
-- 🍛 **Main Course** is the top category with **52.3%** of food sales
-- ❌ **3 cancelled orders** caused **7.86% revenue loss**
-- 💳 **Card payments** are most preferred — **40%** of all transactions
-- 📱 **UPI** accounts for **36.67%** of payments
-- 👥 **100% of customers** placed at least one order — no inactive customers
-- ✅ **Data Quality: 100%** — zero nulls, zero duplicates across all 4 tables
-- 📦 **Delivered: 83.33%** | Pending: 6.67% | Cancelled: 10%
+- 🏙️ **Hyderabad contributes 55.4%** of total restaurant revenue
+- 🍛 **Main Course drives 52.3%** of total food category sales
+- ❌ **Cancellations caused 6.35% revenue loss** — ₹400 out of ₹6,300
+- 💳 **UPI is the #1 payment method** — used in **50%** of all transactions
+- 📦 **80% order delivery rate** across all customers
+- 🧾 **Average Order Value = ₹683** from delivered orders
+- 🏆 **Chicken Biryani** is the best-selling menu item
+- 📉 **6 menu items recorded zero sales** — need menu review
 
 ---
 
-## 🛠️ Tools & Technologies
+## 🛠️ Tools Used
 
 | Tool | Purpose |
 |---|---|
-| MySQL 8.0 | Database & query execution |
-| MySQL Workbench | SQL coding environment |
-| SQL | Data cleaning, joins, aggregations, views |
+| MySQL 8.0 | Database creation & query execution |
+| MySQL Workbench | SQL editor & schema design |
+| SQL Joins | Combining data across 4 tables |
+| Aggregations | SUM, COUNT, AVG, ROUND |
+| CASE WHEN | Conditional revenue analysis |
+| IFNULL | Handling zero-sale menu items |
+| Subqueries | Percentage calculations |
 
 ---
 
-## 🗄️ Database Schema — 4 Tables
+## 🪜 Steps I Followed
 
-| Table | Records | Description |
-|---|---|---|
-| `customers` | 10 | Customer name, phone, email, city, join date |
-| `menu` | 14 | Item name, category, price, availability |
-| `orders` | 30 | Order date, amount, status, payment mode |
-| `order_items` | 38 | Which items were ordered per order |
+**Step 1 — Database Design**
+- Created 4 tables: `customers`, `menu`, `orders`, `order_items`
+- Applied Primary Keys and Foreign Keys for relational integrity
 
-**Relationships:**
-- `orders.customer_id` → `customers.customer_id`
-- `order_items.order_id` → `orders.order_id`
-- `order_items.item_id` → `menu.item_id`
+**Step 2 — Data Insertion**
+- Inserted 10 customers, 10 menu items, 10 orders, and 10 order item records manually
 
----
+**Step 3 — Data Cleaning & Validation**
+- Checked for NULL values across all 4 tables → None found
+- Checked for duplicate customers → None found
+- Validated prices and quantities → All valid
+- Verified foreign key relationships → No mismatches
+- Confirmed valid order statuses: `Delivered · Pending · Cancelled`
+- Confirmed valid payment modes: `UPI · Card · Cash`
 
-## 🔢 Steps I Followed
+**Step 4 — Business Problem Solving**
+- Wrote 10+ SQL queries to solve real business problems
+- Used JOINs, GROUP BY, HAVING, CASE WHEN, Subqueries, and LEFT JOIN
 
-**Step 1 — Created Database & 4 Tables**
-Created `restaurant_revenue_db` with 4 related tables using
-PRIMARY KEYS, FOREIGN KEYS and proper data types.
-
-**Step 2 — Inserted Data**
-Inserted 10 customers, 14 menu items, 30 orders (Jan–Jun 2024)
-and 38 order item records.
-
-**Step 3 — Data Cleaning**
-- Checked NULLs across all columns → Result: 0 NULLs ✅
-- Checked duplicate emails and phones → Result: 0 duplicates ✅
-- Checked invalid quantities → Result: All valid ✅
-- Checked orphan records → Result: All items linked correctly ✅
-- Overall data quality: **100%** across all 4 tables ✅
-
-**Step 4 — Data Consistency Checks**
-- Order status distribution (Delivered / Cancelled / Pending)
-- Payment mode distribution (Card / UPI / Cash)
-- Date range validation (Jan 2024 – Jun 2024)
-- Cancelled orders revenue loss → **7.86% loss**
-
-**Step 5 — Joins (2, 3 and 4 Table Joins)**
-- INNER JOIN: Customers + Orders
-- LEFT JOIN: All customers including those with no orders
-- 3-Table JOIN: Orders + Items + Menu
-- 4-Table JOIN: Full report — customer, item, order details
-
-**Step 6 — Business Analysis Queries**
-- Top customers by total spending and revenue %
-- Best selling menu items by quantity sold
-- Category-wise revenue with % (Main: 52.3%)
-- Monthly revenue trend (Jan–Jun 2024)
-- City-wise revenue (Hyderabad: 55.4%)
-- Payment mode breakdown
-
-**Step 7 — SQL Views (Reusable)**
-- `vw_customer_revenue` — customer spending summary
-- `vw_monthly_revenue` — month-wise revenue trend
+**Step 5 — Insight Generation**
+- Summarised all findings into a business insights report with percentages and revenue figures
 
 ---
 
 ## 📊 Business Insights Summary
 
-| Insight | Result |
-|---|---|
-| Top Revenue City | Hyderabad — 55.4% |
-| Top Food Category | Main Course — 52.3% |
-| Cancelled Orders Loss | 7.86% revenue loss |
-| Most Used Payment | Card — 40% |
-| Delivered Orders | 83.33% |
-| Active Customers | 100% (all 10 ordered) |
-| Data Quality | 100% — zero nulls/duplicates |
+| # | Business Problem | Key Finding |
+|---|---|---|
+| 1 | Top Spending Customers | Identified highest-value customers by delivered revenue |
+| 2 | Best Selling Menu Items | Chicken Biryani → #1 in units sold |
+| 3 | Category-Wise Revenue | Main Course → **52.3%** of total sales |
+| 4 | Monthly Revenue Trend | Revenue tracked Jan → Mar 2024 |
+| 5 | Most Used Payment Method | UPI → **50%** · Card → 30% · Cash → 20% |
+| 6 | City-Wise Revenue | Hyderabad → **55.4%** of total revenue |
+| 7 | Repeat Customers | Identified loyal customers with 2+ orders |
+| 8 | Revenue Loss — Cancellations | ₹400 lost → **6.35%** revenue loss |
+| 9 | Low Selling Products | 6 items with zero sales detected |
+| 10 | Average Order Value | AOV = **₹683** (delivered orders) |
 
 ---
 
-## 📁 Files in This Repo
-
-| File | Description |
-|---|---|
-| `CUSTOMER BEHAVIOUR & REVENUE INSIGHTS` | Complete SQL project file |
-| `README.md` | Project documentation |
+<div align="center">
 
 ---
 
-## 👩‍💻 Made By
+### 🤍 Made with passion by
 
-**Dumpa Vaishnavi** — Data Analyst
-📍 Hyderabad, India
+# D. Vaishnavi
+**Data Analyst · Hyderabad, India**
+
 📧 dumpavaishnavi269@gmail.com
-🔗 [LinkedIn](https://linkedin.com/in/dumpavaishnavi)
-🌐 [Portfolio](https://dumpa-vaishnavi.com)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/dumpa-vaishnavi)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat-square&logo=github)](https://github.com/dumpavaishnavi269-rgb)
 
 ---
 
-⭐ Star this repo if you found it useful!
+*"Turning raw data into real decisions."*
+
+</div>
