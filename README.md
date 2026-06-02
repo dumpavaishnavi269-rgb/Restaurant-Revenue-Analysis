@@ -12,6 +12,13 @@
 I built this project using **MySQL 8.0** and **MySQL Workbench** to analyse real restaurant sales data.  
 I designed a **4-table relational database** from scratch — covering customers, menu items, orders, and order details — inserted data manually, performed complete **data cleaning & validation**, and solved **10 business problems** using advanced SQL queries to generate meaningful insights for restaurant decision-making.
 
+Business Problem:
+Every restaurant wants to know who their most valuable customers are. Without identifying high-spending customers, the restaurant cannot design loyalty programs, offer personalized discounts, or retain its best buyers. The management needed clarity on which customers consistently placed high-value delivered orders.
+
+
+Desired Outcome:
+Find the top customers ranked by total revenue generated from successfully delivered orders only, so the restaurant can reward and retain them.
+
 ---
 
 ## 💡 Key Insights
